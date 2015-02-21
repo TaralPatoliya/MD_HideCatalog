@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <MD
+_HideCatalog>
+      <version>0.1.0</version>
+    </MD
+_HideCatalog>
+  </modules>
+  <global>
+    <helpers>
+      <hidecatalog>
+        <class>MD
+_HideCatalog_Helper</class>
+      </hidecatalog>
+    </helpers>
+    <models>
+     <hidecatalog>
+      <class>MD
+_HideCatalog_Model</class>
+      <resourceModel>hidecatalog_mysql4</resourceModel>
+    </hidecatalog>   
+  </models>
+  <blocks>
+    <MD
+_HideCatalog>
+      <class>MD
+_HideCatalog_Block</class>
+    </MD
+_HideCatalog>
+    <catalog>
+      <rewrite>
+        <product_list>MD
+_HideCatalog_Block_Product_List</product_list>
+      </rewrite>
+    </catalog>
+  </blocks>
+  <resources>
+   <categoryattribute1424240455_setup>
+    <setup>
+      <module>MD
+_HideCatalog</module>
+      <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+    </setup>
+    <connection>
+      <use>core_setup</use>
+    </connection>
+  </categoryattribute1424240455_setup>
+  <categoryattribute1424240455_write>
+    <connection>
+      <use>core_write</use>
+    </connection>
+  </categoryattribute1424240455_write>
+  <categoryattribute1424240455_read>
+    <connection>
+      <use>core_read</use>
+    </connection>
+  </categoryattribute1424240455_read>
+</resources>
+</global>
+<frontend>
+  <events>
+   <catalog_category_collection_load_after>
+    <observers>
+      <catalog_category_collection_load_after_handler>
+        <type>model</type>
+        <class>hidecatalog/observer</class>
+        <method>catalogCategoryCollectionLoadBefore</method>
+        <args></args>
+      </catalog_category_collection_load_after_handler>
+    </observers>
+  </catalog_category_collection_load_after>
+  <catalog_product_collection_load_before> 
+    <observers>
+      <catalog_product_collection_load_before_handler>
+        <type>model</type>
+        <class>hidecatalog/observer</class>
+        <method>catalogProductCollectionLoadBefore</method>
+        <args></args>
+      </catalog_product_collection_load_before_handler>
+    </observers>
+  </catalog_product_collection_load_before>
+  <controller_action_predispatch>
+    <observers>
+      <controller_action_predispatch>
+        <type>model</type>
+        <class>hidecatalog/observer</class>
+        <method>unAuthorisedRouteAccess</method>
+      </controller_action_predispatch>
+    </observers>
+  </controller_action_predispatch>
+</events>
+</frontend>
+<default>
+  <redirect>1</redirect>
+</default>
+</config> 
